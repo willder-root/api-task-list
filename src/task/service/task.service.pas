@@ -15,6 +15,7 @@ type
     constructor Create;
     function CreateTask(taskInsert: TTaskInsert): TTask;
     function UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
+    function DeleteTask(id: integer): TTask;
   end;
 
 implementation
@@ -45,6 +46,18 @@ begin
   finally
     taskCreateDTO.Free;
   end;
+end;
+
+function TTaskService.DeleteTask(id: integer): TTask;
+begin
+  if id <= 0 then
+    raise Exception.Create('Id is required.');
+
+  Result := FTaskRepository.findById(id);
+  if not Assigned(Result) then
+    raise Exception.Create('Task not found.');
+
+  Result := FTaskRepository.Delete(id);
 end;
 
 function TTaskService.UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
