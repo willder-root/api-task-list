@@ -150,6 +150,7 @@
         </DelphiCompile>
         <DCCReference Include="server.pas"/>
         <DCCReference Include="src\config\documentation.config.pas"/>
+        <DCCReference Include="src\task\types\task.types.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
