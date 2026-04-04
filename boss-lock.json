@@ -26,6 +26,14 @@
 			"failed": false,
 			"changed": false
 		},
+		"https://github.com/willder-root/gbjson": {
+			"name": "gbjson",
+			"version": "1.0.1",
+			"hash": "3aba570de230cf106689fe36c204d06a",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
 		"https://github.com/willder-root/gbswagger": {
 			"name": "gbswagger",
 			"version": "1.0.1",

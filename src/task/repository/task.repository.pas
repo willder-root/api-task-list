@@ -24,6 +24,7 @@ type
 implementation
 
 uses
+  System.DateUtils,
   System.Generics.Collections,
   System.SysUtils,
   Data.DB;
@@ -69,6 +70,8 @@ end;
 function TTaskRepository.findAll(Filter: RTaskFilter): TTaskList;
 var
   qryPesquisa: IQuery;
+  startOfDay: TDateTime;
+  endOfDay: TDateTime;
 begin
   Result := TTaskList.Create;
   Result.Tasks := TObjectList<TTask>.Create(True);
@@ -84,10 +87,16 @@ begin
         .Add(' AND (TASK.TITLE CONTAINING :P_TITLE)')
         .AddParam('P_TITLE', Filter.Title.Trim);
 
-    if Filter.StartedAt > 0 then
+    if Filter.DateStart > 0 then
+    begin
+      startOfDay := RecodeTime(Filter.DateStart, 0, 1, 0, 0);
+      endOfDay := RecodeTime(Filter.DateStart, 23, 59, 0, 0);
+
       qryPesquisa
-        .Add(' AND (TASK.STARTEDAT = :P_STARTEDAT)')
-        .AddParam('P_STARTEDAT', Filter.StartedAt);
+        .Add(' AND (TASK.STARTEDAT BETWEEN :P_STARTEDAT_BEGIN AND :P_STARTEDAT_END)')
+        .AddParam('P_STARTEDAT_BEGIN', startOfDay)
+        .AddParam('P_STARTEDAT_END', endOfDay);
+    end;
 
     if Filter.HasStatus then
       qryPesquisa

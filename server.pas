@@ -23,7 +23,9 @@ uses
   horse.cors,
   Horse.Jhonson,
   Horse.GBSwagger,
-  documentation.config;
+  documentation.config,
+  route,
+  GBJSON.Config;
 
 var
   FInstance: TServer = nil;
@@ -36,6 +38,9 @@ begin
     .Use(CORS)
     .Use(Jhonson())
     .Use(HorseSWagger);
+    TRoute.Resgiter;
+    TGBJSONConfig.GetInstance.DateTimeFormat('dd/mm/yyyy');
+    TGBJSONConfig.GetInstance.DateTimeLocale('pt-BR');
 end;
 
 destructor TServer.destroy;
