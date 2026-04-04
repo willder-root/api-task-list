@@ -17,7 +17,10 @@ uses
   Query in 'src\database\Query.pas',
   QueryInterface in 'src\database\QueryInterface.pas',
   database.config in 'src\config\database.config.pas',
-  uAcessoIni in 'src\util\uAcessoIni.pas';
+  uAcessoIni in 'src\util\uAcessoIni.pas',
+  task.repository.interfaces in 'src\task\repository\task.repository.interfaces.pas',
+  repository.base in 'src\shared\repository\repository.base.pas',
+  task.repository in 'src\task\repository\task.repository.pas';
 
 begin
   try
