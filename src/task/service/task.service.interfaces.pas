@@ -9,6 +9,7 @@ type
   ITaskService = interface
     ['{786A0EA5-4715-4F44-A9A4-1781A2B3128E}']
     function CreateTask(taskInsert: TTaskInsert): TTask;
+    function UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
   end;
 
 implementation

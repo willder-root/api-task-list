@@ -1,4 +1,4 @@
-unit task.service.dto;
+unit task.service.create.dto;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   task.types;
 
 type
-  TTaskInsertDTO = class
+  TTaskCreateDTO = class
   private
     FFinishedAt: TDateTime;
     FTitle: string;
@@ -21,9 +21,9 @@ type
 
 implementation
 
-{ TTaskInsertDTO }
+{ TTaskCreateDTO }
 
-constructor TTaskInsertDTO.Create(taskInsert: TTaskInsert);
+constructor TTaskCreateDTO.Create(taskInsert: TTaskInsert);
 begin
   inherited Create;
   if not Assigned(taskInsert) then
@@ -35,7 +35,7 @@ begin
   FStatus := taskInsert.Status;
 end;
 
-procedure TTaskInsertDTO.Validate;
+procedure TTaskCreateDTO.Validate;
 var
   validationErrors: TStringList;
 begin

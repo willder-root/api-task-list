@@ -22,7 +22,8 @@ uses
   repository.base in 'src\shared\repository\repository.base.pas',
   task.repository in 'src\task\repository\task.repository.pas',
   task.service.interfaces in 'src\task\service\task.service.interfaces.pas',
-  task.service.dto in 'src\task\service\task.service.dto.pas',
+  task.service.create.dto in 'src\task\service\task.service.create.dto.pas',
+  task.service.update.dto in 'src\task\service\task.service.update.dto.pas',
   task.service in 'src\task\service\task.service.pas';
 
 begin

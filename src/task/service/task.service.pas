@@ -14,14 +14,17 @@ type
   public
     constructor Create;
     function CreateTask(taskInsert: TTaskInsert): TTask;
+    function UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
   end;
 
 implementation
 
 uses
+  System.SysUtils,
   query.factory,
   task.repository,
-  task.service.dto;
+  task.service.create.dto,
+  task.service.update.dto;
 
 { TTaskService }
 
@@ -33,14 +36,30 @@ end;
 
 function TTaskService.CreateTask(taskInsert: TTaskInsert): TTask;
 var
-  taskInsertDTO: TTaskInsertDTO;
+  taskCreateDTO: TTaskCreateDTO;
 begin
-  taskInsertDTO := TTaskInsertDTO.Create(taskInsert);
+  taskCreateDTO := TTaskCreateDTO.Create(taskInsert);
   try
-    taskInsertDTO.Validate;
+    taskCreateDTO.Validate;
     Result := FTaskRepository.Insert(taskInsert);
   finally
-    taskInsertDTO.Free;
+    taskCreateDTO.Free;
+  end;
+end;
+
+function TTaskService.UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
+var
+  taskUpdateDTO: TTaskUpdateDTO;
+begin
+  if id <= 0 then
+    raise Exception.Create('Id is required.');
+
+  taskUpdateDTO := TTaskUpdateDTO.Create(taskUpdate);
+  try
+    taskUpdateDTO.Validate;
+    Result := FTaskRepository.Update(id, taskUpdate);
+  finally
+    taskUpdateDTO.Free;
   end;
 end;
 
