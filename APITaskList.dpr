@@ -7,7 +7,8 @@ program APITaskList;
 uses
   System.SysUtils,
   server in 'server.pas',
-  documentation.config in 'src\config\documentation.config.pas';
+  documentation.config in 'src\config\documentation.config.pas',
+  task.types in 'src\task\types\task.types.pas';
 
 begin
   try
