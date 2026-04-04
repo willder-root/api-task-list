@@ -9,8 +9,10 @@ uses
 
 type
 
-  TTaskStatus = ( tsPending = 1,
-                  tsFinish = 2);
+  {$TYPEINFO ON}
+  TTaskStatus = ( PENDING,
+                  FINISH);
+  {$TYPEINFO OFF}
 
   TTaskStatusHelper = record helper for TTaskStatus
     function ToString: string;
@@ -94,3 +96,5 @@ begin
 end;
 
 end.
+
+

@@ -151,6 +151,15 @@
         <DCCReference Include="server.pas"/>
         <DCCReference Include="src\config\documentation.config.pas"/>
         <DCCReference Include="src\task\types\task.types.pas"/>
+        <DCCReference Include="src\database\connection.factory.firedac.pas"/>
+        <DCCReference Include="src\database\connection.factory.interfaces.pas"/>
+        <DCCReference Include="src\database\Connection.pas"/>
+        <DCCReference Include="src\database\query.factory.interfaces.pas"/>
+        <DCCReference Include="src\database\query.factory.pas"/>
+        <DCCReference Include="src\database\Query.pas"/>
+        <DCCReference Include="src\database\QueryInterface.pas"/>
+        <DCCReference Include="src\config\database.config.pas"/>
+        <DCCReference Include="src\util\uAcessoIni.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
