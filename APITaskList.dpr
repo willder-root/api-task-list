@@ -24,7 +24,9 @@ uses
   task.service.interfaces in 'src\task\service\task.service.interfaces.pas',
   task.service.create.dto in 'src\task\service\task.service.create.dto.pas',
   task.service.update.dto in 'src\task\service\task.service.update.dto.pas',
-  task.service in 'src\task\service\task.service.pas';
+  task.service in 'src\task\service\task.service.pas',
+  task.controller in 'src\task\controller\task.controller.pas',
+  route in 'src\api\route\route.pas';
 
 begin
   try

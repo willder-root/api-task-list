@@ -5,7 +5,8 @@ interface
 uses
   system.generics.collections,
   system.sysutils,
-  typInfo;
+  typInfo,
+  GBSwagger.Model.Attributes;
 
 type
   TTaskStatus = ( PENDING,
@@ -30,11 +31,16 @@ type
   published
     property Id: integer read FId write FId;
     property Title: string read FTitle write FTitle;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property StartedAt: TDateTime read FStartedAt write FStartedAt;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property FinishedAt: TDateTime read FFinishedAt write FFinishedAt;
     property Status: TTaskStatus read FStatus write FStatus;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property CreatedAt: TDateTime read FCreatedAt write FCreatedAt;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property UpdatedAt: TDateTime read FUpdatedAt write FUpdatedAt;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property DeletedAt: TDateTime read FDeletedAt write FDeletedAt;
   end;
 
@@ -53,7 +59,9 @@ type
     FStartedAt: TDateTime;
   published
     property Title: string read FTitle write FTitle;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property StartedAt: TDateTime read FStartedAt write FStartedAt;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property FinishedAt: TDateTime read FFinishedAt write FFinishedAt;
     property Status: TTaskStatus read FStatus write FStatus;
   end;
@@ -66,14 +74,16 @@ type
     FStartedAt: TDateTime;
   published
     property Title: string read FTitle write FTitle;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property StartedAt: TDateTime read FStartedAt write FStartedAt;
+    [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property FinishedAt: TDateTime read FFinishedAt write FFinishedAt;
     property Status: TTaskStatus read FStatus write FStatus;
   end;
 
   RTaskFilter = record
     Title: string;
-    StartedAt: TDateTime;
+    DateStart: TDate;
     HasStatus: Boolean;
     Status: TTaskStatus;
   end;
