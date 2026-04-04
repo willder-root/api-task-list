@@ -1,5 +1,38 @@
 {
 	"hash": "d41d8cd98f00b204e9800998ecf8427e",
 	"updated": "2026-04-04T10:21:46.4734719-03:00",
-	"installedModules": {}
+	"installedModules": {
+		"github.com/hashload/horse": {
+			"name": "horse",
+			"version": "3.2.0",
+			"hash": "ac8340f7d5e6f9c03c97a6fc534924b2",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/hashload/horse-cors": {
+			"name": "horse-cors",
+			"version": "1.0.7",
+			"hash": "d15fed3280e380f2bc6918da71772b7a",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/hashload/jhonson": {
+			"name": "jhonson",
+			"version": "1.2.1",
+			"hash": "dda7dc5ade9e50207be4485c5045e47b",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/willder-root/gbswagger": {
+			"name": "gbswagger",
+			"version": "1.0.1",
+			"hash": "abba27feb7f79eb6b9d1d95c02ebdcc0",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
 }
