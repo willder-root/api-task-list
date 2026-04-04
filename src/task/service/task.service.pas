@@ -13,6 +13,8 @@ type
     FTaskRepository: ITaskRepository;
   public
     constructor Create;
+    function FindById(id: Integer): TTask;
+    function FindAll(const Filter: RTaskFilter): TTaskList;
     function CreateTask(taskInsert: TTaskInsert): TTask;
     function UpdateTask(id: integer; taskUpdate: TTaskUpdated): TTask;
     function DeleteTask(id: integer): TTask;
@@ -33,6 +35,19 @@ constructor TTaskService.Create;
 begin
   inherited Create;
   FTaskRepository := TTaskRepository.Create(TQueryFactory.New);
+end;
+
+function TTaskService.FindAll(const Filter: RTaskFilter): TTaskList;
+begin
+  Result := FTaskRepository.findAll(Filter);
+end;
+
+function TTaskService.FindById(id: Integer): TTask;
+begin
+  if id <= 0 then
+    raise Exception.Create('Id is required.');
+
+  Result := FTaskRepository.findById(id);
 end;
 
 function TTaskService.CreateTask(taskInsert: TTaskInsert): TTask;
