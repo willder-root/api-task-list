@@ -8,11 +8,8 @@ uses
   typInfo;
 
 type
-
-  {$TYPEINFO ON}
   TTaskStatus = ( PENDING,
                   FINISH);
-  {$TYPEINFO OFF}
 
   TTaskStatusHelper = record helper for TTaskStatus
     function ToString: string;
@@ -50,13 +47,11 @@ type
 
   TTaskInsert = class
   private
-    FId: integer;
     FFinishedAt: TDateTime;
     FTitle: string;
     FStatus: TTaskStatus;
     FStartedAt: TDateTime;
   published
-    property Id: integer read FId write FId;
     property Title: string read FTitle write FTitle;
     property StartedAt: TDateTime read FStartedAt write FStartedAt;
     property FinishedAt: TDateTime read FFinishedAt write FFinishedAt;
@@ -76,13 +71,20 @@ type
     property Status: TTaskStatus read FStatus write FStatus;
   end;
 
+  RTaskFilter = record
+    Title: string;
+    StartedAt: TDateTime;
+    HasStatus: Boolean;
+    Status: TTaskStatus;
+  end;
+
 implementation
 
 { TTaskStatusHelper }
 
 function TTaskStatusHelper.ToEnum(value: string): TTaskStatus;
 begin
-  Result := TTaskStatus(GetEnumValue(TypeInfo(TTaskStatus),UpperCase(value)));
+  Result := TTaskStatus(GetEnumValue(TypeInfo(TTaskStatus), UpperCase(value)));
 end;
 
 function TTaskStatusHelper.ToEnum(value: integer): TTaskStatus;
@@ -92,9 +94,7 @@ end;
 
 function TTaskStatusHelper.ToString: string;
 begin
-  Result := GetEnumName(TypeInfo(TTaskStatus), integer(Self));
+  Result := GetEnumName(TypeInfo(TTaskStatus), Integer(Self));
 end;
 
 end.
-
-
