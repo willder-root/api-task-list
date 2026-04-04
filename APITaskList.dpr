@@ -20,7 +20,10 @@ uses
   uAcessoIni in 'src\util\uAcessoIni.pas',
   task.repository.interfaces in 'src\task\repository\task.repository.interfaces.pas',
   repository.base in 'src\shared\repository\repository.base.pas',
-  task.repository in 'src\task\repository\task.repository.pas';
+  task.repository in 'src\task\repository\task.repository.pas',
+  task.service.interfaces in 'src\task\service\task.service.interfaces.pas',
+  task.service.dto in 'src\task\service\task.service.dto.pas',
+  task.service in 'src\task\service\task.service.pas';
 
 begin
   try
