@@ -5,11 +5,13 @@ program APITaskList;
 {$R *.res}
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  server in 'server.pas',
+  documentation.config in 'src\config\documentation.config.pas';
 
 begin
   try
-    { TODO -oUser -cConsole Main : Insert code here }
+    TServer.Instance.Initialize;
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
