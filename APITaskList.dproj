@@ -163,6 +163,10 @@
         <DCCReference Include="src\task\repository\task.repository.interfaces.pas"/>
         <DCCReference Include="src\shared\repository\repository.base.pas"/>
         <DCCReference Include="src\task\repository\task.repository.pas"/>
+        <DCCReference Include="src\task\service\task.service.interfaces.pas"/>
+        <DCCReference Include="src\task\service\task.service.create.dto.pas"/>
+        <DCCReference Include="src\task\service\task.service.update.dto.pas"/>
+        <DCCReference Include="src\task\service\task.service.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
