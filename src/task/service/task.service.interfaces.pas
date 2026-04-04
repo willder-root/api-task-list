@@ -1,0 +1,16 @@
+unit task.service.interfaces;
+
+interface
+
+uses
+  task.types;
+
+type
+  ITaskService = interface
+    ['{786A0EA5-4715-4F44-A9A4-1781A2B3128E}']
+    function CreateTask(taskInsert: TTaskInsert): TTask;
+  end;
+
+implementation
+
+end.
