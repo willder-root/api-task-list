@@ -1,0 +1,35 @@
+# Delphi / RAD Studio local files
+*.dsk
+*.identcache
+*.local
+*.groupproj.local
+*.dproj.local
+
+# Delphi compiler outputs
+*.dcu
+*.ddp
+*.dcp
+*.bpl
+*.bpi
+*.map
+*.rsm
+*.tds
+*.drc
+*.stat
+
+# Generated binaries
+*.exe
+*.dll
+
+# Common Delphi build folders
+Win32/
+Win64/
+Debug/
+Release/
+
+# Project history and backups
+__history/
+*.~*
+
+# Dependency/modules folder
+modules/
