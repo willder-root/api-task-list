@@ -65,6 +65,8 @@ class function TServer.Instance: TServer;
 begin
   if not Assigned(FInstance) then
     FInstance := Self.create;
+
+  Result := FInstance;
 end;
 
 procedure TServer.Stop;

@@ -58,6 +58,7 @@ class function TDatabaseConfig.Instance: TDatabaseConfig;
 begin
   if not assigned(FInstance) then
     FInstance := Self.create;
+  Result := FInstance;
 end;
 
 
