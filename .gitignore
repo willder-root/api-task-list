@@ -33,3 +33,6 @@ __history/
 
 # Dependency/modules folder
 modules/
+
+#config files
+*.ini
