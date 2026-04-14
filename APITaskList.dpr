@@ -1,13 +1,11 @@
 program APITaskList;
-
-{$APPTYPE CONSOLE}
-
-{$R *.res}
-
+{ CONSOLE}
+{ *.res}
 uses
   System.SysUtils,
   server in 'server.pas',
   documentation.config in 'src\config\documentation.config.pas',
+  basicAuth.config in 'src\config\basicAuth.config.pas',
   task.types in 'src\task\types\task.types.pas',
   connection.factory.firedac in 'src\database\connection.factory.firedac.pas',
   connection.factory.interfaces in 'src\database\connection.factory.interfaces.pas',
@@ -26,8 +24,8 @@ uses
   task.service.update.dto in 'src\task\service\task.service.update.dto.pas',
   task.service in 'src\task\service\task.service.pas',
   task.controller in 'src\task\controller\task.controller.pas',
-  route in 'src\api\route\route.pas';
-
+  route in 'src\api\route\route.pas',
+  basicAuth.middleware in 'src\api\middleware\basicAuth.middleware.pas';
 begin
   try
     TServer.Instance.Initialize;

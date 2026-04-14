@@ -1,22 +1,18 @@
 unit documentation.config;
-
 interface
-
 uses
   Horse.GBSwagger,
   GBSwagger.Model.Config;
-
 type
   TSwaggerConfig = class
   public
-    procedure InitializeConfig;
+    class procedure InitializeConfig;
   end;
-
 implementation
-
+uses
+  basicAuth.middleware;
 { TSwaggerConfig }
-
-procedure TSwaggerConfig.InitializeConfig;
+class procedure TSwaggerConfig.InitializeConfig;
 begin
   Swagger
     .Info
@@ -29,10 +25,10 @@ begin
       .&End
     .&End
     .AddProtocol(TGBSwaggerProtocol.gbHttp)
+    .AddBasicSecurity
+      .AddCallback(BasicAuthMiddleware())
     .&End
     .BasePath('v1')
     .&End;
-
 end;
-
 end.

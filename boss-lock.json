@@ -10,6 +10,14 @@
 			"failed": false,
 			"changed": false
 		},
+		"github.com/hashload/horse-basic-auth": {
+			"name": "horse-basic-auth",
+			"version": "1.2.5",
+			"hash": "cbc59231ed21985373233760c25b7318",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
 		"github.com/hashload/horse-cors": {
 			"name": "horse-cors",
 			"version": "1.0.7",
@@ -29,7 +37,7 @@
 		"https://github.com/willder-root/gbjson": {
 			"name": "gbjson",
 			"version": "1.0.1",
-			"hash": "3aba570de230cf106689fe36c204d06a",
+			"hash": "37ac62c168c5e5758338a0e2c7237ee4",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

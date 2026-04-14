@@ -15,26 +15,26 @@ type
   [SwagPath('Task','Endpoints de controle de tarefas')]
   TTaskController = class(THorseGBSwagger)
   public
-    [SwagGET('{id}','Pesquisa uma tarefa pelo id')]
+    [SwagGET('{id}','Pesquisa uma tarefa pelo id', false)]
     [SwagParamPath('id','Id da tarefa')]
     [SwagResponse(200, TTask)]
     [SwagResponse(404)]
     procedure Show;
 
-    [SwagGET('List','Lista tarefas')]
+    [SwagGET('List','Lista tarefas', false)]
     [SwagParamQuery('Title','Titulo da tarefa')]
     [SwagParamQuery('DateStart','Data de inicio da tarefa. Formato dd/mm/yyyy')]
     [SwagParamQuery('Status','Situacao da tarefa')]
     [SwagResponse(200, TTaskList)]
     procedure List;
 
-    [SwagPOST('Cria nova Tarefa')]
+    [SwagPOST('Cria nova Tarefa', false)]
     [SwagParamBody('CreateTask', TTaskInsert)]
     [SwagResponse(201)]
     [SwagResponse(400)]
     procedure CreateTask;
 
-    [SwagPUT('{id}','Atualiza uma Tarefa')]
+    [SwagPUT('{id}','Atualiza uma Tarefa', false)]
     [SwagParamPath('id','Id da tarefa')]
     [SwagParamBody('Updatetask', TTaskUpdated)]
     [SwagResponse(200)]
@@ -42,7 +42,7 @@ type
     [SwagResponse(404)]
     procedure UpdateTask;
 
-    [SwagDelete('{id}','Apaga uma Tarefa')]
+    [SwagDelete('{id}','Apaga uma Tarefa', false)]
     [SwagParamPath('id','Id da tarefa')]
     [SwagResponse(200)]
     [SwagResponse(400)]
@@ -84,7 +84,7 @@ begin
         raise EHorseException.New.Status(THTTPStatus.BadRequest).Error(E.Message);
     end;
 
-    FResponse.Status(THTTPStatus.Created);
+    FResponse.Status(THTTPStatus.Created).Send<TJSONObject>(TJSONObject.Create);
   finally
     taskInsert.Free;
   end;
@@ -113,7 +113,7 @@ begin
         raise;
   end;
 
-  FResponse.Status(THTTPStatus.Ok);
+  FResponse.Status(THTTPStatus.Ok).Send<TJSONObject>(TJSONObject.Create);
 end;
 
 procedure TTaskController.List;
@@ -156,7 +156,7 @@ begin
 
   taskService := TTaskService.Create;
   taskList := taskService.FindAll(filter);
-  FResponse.Send<TTaskList>(taskList).Status(THTTPStatus.Ok);
+  FResponse.Send<TJSONObject>(taskList.ToJSONObject).Status(THTTPStatus.Ok);
 end;
 
 procedure TTaskController.Show;
@@ -209,7 +209,7 @@ begin
     if not Assigned(task) then
       raise EHorseException.New.Status(THTTPStatus.NotFound).Error('Task not found.');
 
-    FResponse.Status(THTTPStatus.Ok);
+    FResponse.Status(THTTPStatus.Ok).Send<TJSONObject>(TJSONObject.Create);
   finally
     taskUpdate.Free;
   end;

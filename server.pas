@@ -34,13 +34,15 @@ var
 
 constructor TServer.create;
 begin
+
   THorse
     .Use(CORS)
     .Use(Jhonson())
     .Use(HorseSWagger);
-    TRoute.Resgiter;
-    TGBJSONConfig.GetInstance.DateTimeFormat('dd/mm/yyyy hh:mm:ss');
-    TGBJSONConfig.GetInstance.DateTimeLocale('pt-BR');
+  TSwaggerConfig.InitializeConfig;
+  TRoute.Resgiter;
+  TGBJSONConfig.GetInstance.DateTimeFormat('dd/mm/yyyy hh:mm:ss');
+  TGBJSONConfig.GetInstance.DateTimeLocale('pt-BR');
 end;
 
 destructor TServer.destroy;
@@ -81,4 +83,6 @@ finalization
     FreeAndNil(FInstance);
 
 end.
+
+
 
