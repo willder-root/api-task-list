@@ -8,7 +8,8 @@ uses
   Horse.GBSwagger.Controller,
   GBJSON.Interfaces,
   GBJSON.Helper,
-  task.types;
+  task.types,
+  system.json;
 
 type
   [SwagPath('Task','Endpoints de controle de tarefas')]
@@ -83,8 +84,7 @@ begin
         raise EHorseException.New.Status(THTTPStatus.BadRequest).Error(E.Message);
     end;
 
-    FResponse.Send<TTask>(task).Status(THTTPStatus.Created);
-    task := nil;
+    FResponse.Status(THTTPStatus.Created);
   finally
     taskInsert.Free;
   end;
@@ -113,8 +113,7 @@ begin
         raise;
   end;
 
-  FResponse.Send<TTask>(task).Status(THTTPStatus.Ok);
-  task := nil;
+  FResponse.Status(THTTPStatus.Ok);
 end;
 
 procedure TTaskController.List;
@@ -158,7 +157,6 @@ begin
   taskService := TTaskService.Create;
   taskList := taskService.FindAll(filter);
   FResponse.Send<TTaskList>(taskList).Status(THTTPStatus.Ok);
-  taskList := nil;
 end;
 
 procedure TTaskController.Show;
@@ -176,7 +174,7 @@ begin
   if not Assigned(task) then
     raise EHorseException.New.Status(THTTPStatus.NotFound).Error('Task not found.');
 
-  FResponse.Send<TTask>(task).Status(THTTPStatus.Ok);
+  FResponse.Send<TJSONObject>(task.ToJSONObject).Status(THTTPStatus.Ok);
   task := nil;
 end;
 
@@ -211,8 +209,7 @@ begin
     if not Assigned(task) then
       raise EHorseException.New.Status(THTTPStatus.NotFound).Error('Task not found.');
 
-    FResponse.Send<TTask>(task).Status(THTTPStatus.Ok);
-    task := nil;
+    FResponse.Status(THTTPStatus.Ok);
   finally
     taskUpdate.Free;
   end;

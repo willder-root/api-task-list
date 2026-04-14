@@ -38,8 +38,7 @@ const
   '    TASK.FINISHEDAT,    ' + sLineBreak +
   '    TASK.STATUS,        ' + sLineBreak +
   '    TASK.CREATEDAT,     ' + sLineBreak +
-  '    TASK.UPDATEDAT,     ' + sLineBreak +
-  '    TASK.DELETEDAT      ' + sLineBreak +
+  '    TASK.UPDATEDAT      ' + sLineBreak +
   'FROM                    ' + sLineBreak +
   '    TASK                ' + sLineBreak +
   'WHERE                   ' + sLineBreak +
@@ -157,7 +156,8 @@ begin
     else
       qryInsert.Query.ParamByName('P_FINISHEDAT').Clear;
 
-    qryInsert.Open;
+    qryInsert.open;
+    qryInsert.commit;
     id := qryInsert.DataSet.FieldByName('ID').AsInteger;
     Result := findById(id);
   finally
@@ -188,8 +188,6 @@ begin
   if not LDataSet.FieldByName('UPDATEDAT').IsNull then
     Result.UpdatedAt := LDataSet.FieldByName('UPDATEDAT').AsDateTime;
 
-  if not LDataSet.FieldByName('DELETEDAT').IsNull then
-    Result.DeletedAt := LDataSet.FieldByName('DELETEDAT').AsDateTime;
 end;
 
 function TTaskRepository.Update(id: integer; taskUpdate: TTaskUpdated): TTask;

@@ -40,8 +40,6 @@ type
     property CreatedAt: TDateTime read FCreatedAt write FCreatedAt;
     [SwagDate('dd/mm/yyyy hh:mm:ss')]
     property UpdatedAt: TDateTime read FUpdatedAt write FUpdatedAt;
-    [SwagDate('dd/mm/yyyy hh:mm:ss')]
-    property DeletedAt: TDateTime read FDeletedAt write FDeletedAt;
   end;
 
   TTaskList = class
