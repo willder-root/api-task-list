@@ -24,6 +24,7 @@ interface
       function AddParamNullValuePlus(Param, Campo: string): IQuery;
       function ExecSQL: IQuery;
       function DataSet: TDataSet;
+      procedure Commit;
     end;
 implementation
 

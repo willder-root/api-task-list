@@ -48,6 +48,7 @@ interface
         function ParamLoadFromFile(Param: string; FilePath: string): IQuery;
         function ExecSQL: IQuery;
         function DataSet: TDataSet;
+        procedure Commit;
         class function StartQuery(connection:TFDConnection): IQuery;
     end;
 
@@ -113,6 +114,11 @@ function TQuery.Close: IQuery;
 begin
   Result := self;
   FQuery.Close;
+end;
+
+procedure TQuery.Commit;
+begin
+  FQuery.Connection.Commit;
 end;
 
 constructor TQuery.create(connection: TFDConnection);
