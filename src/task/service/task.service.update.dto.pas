@@ -36,28 +36,18 @@ begin
 end;
 
 procedure TTaskUpdateDTO.Validate;
-var
-  validationErrors: TStringList;
 begin
-  validationErrors := TStringList.Create;
-  try
-    if Trim(FTitle).IsEmpty then
-      validationErrors.Add('Title is required.');
+  if Trim(FTitle).IsEmpty then
+    raise Exception.Create('Title is required.');
 
-    if FStartedAt <= 0 then
-      validationErrors.Add('StartedAt is required.');
+  if FStartedAt <= 0 then
+    raise Exception.Create('StartedAt is required.');
 
-    if FFinishedAt <= 0 then
-      validationErrors.Add('FinishedAt is required.');
+  if FFinishedAt <= 0 then
+    raise Exception.Create('FinishedAt is required.');
 
-    if not (Integer(FStatus) in [Integer(Low(TTaskStatus))..Integer(High(TTaskStatus))]) then
-      validationErrors.Add('Status is required.');
-
-    if validationErrors.Count > 0 then
-      raise Exception.Create(validationErrors.Text.Trim);
-  finally
-    validationErrors.Free;
-  end;
+  if not (Integer(FStatus) in [Integer(Low(TTaskStatus))..Integer(High(TTaskStatus))]) then
+    raise Exception.Create('Status is required.');
 end;
 
 end.

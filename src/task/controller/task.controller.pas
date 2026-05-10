@@ -156,7 +156,7 @@ begin
 
   taskService := TTaskService.Create;
   taskList := taskService.FindAll(filter);
-  FResponse.Send<TTaskList>(taskList).Status(THTTPStatus.Ok);
+  FResponse.Send<TJSONObject>(taskList.ToJSONObject).Status(THTTPStatus.Ok);
 end;
 
 procedure TTaskController.Show;
@@ -175,7 +175,6 @@ begin
     raise EHorseException.New.Status(THTTPStatus.NotFound).Error('Task not found.');
 
   FResponse.Send<TJSONObject>(task.ToJSONObject).Status(THTTPStatus.Ok);
-  task := nil;
 end;
 
 procedure TTaskController.UpdateTask;
